@@ -42,7 +42,8 @@ Deliverables
 - Computational knowledge: recognize generalizability of each method used in pipeline and how they can be engineered and customized for specific data sets
 - Project results: good feels
 
-## Data: https://drive.google.com/file/d/19eYpnO-UCOoTYHHFAlYLo29YnvBKX07u/view?usp=sharing
+## Data
+Link for download: https://drive.google.com/file/d/19eYpnO-UCOoTYHHFAlYLo29YnvBKX07u/view?usp=sharing
 
 ### drive/data/01_features
 
