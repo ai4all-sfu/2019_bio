@@ -12,7 +12,9 @@ scripts:
 ## schedule
 
 Day 1: Explore the challenge, work on the data and learn about feature extraction 
+
 Day 2: Work on Machine Learning Models and Prediction 
+
 Day 3: Work on the presentation of the final results 
 
 ## project: sub-challenge 1 - gestational age prediction
