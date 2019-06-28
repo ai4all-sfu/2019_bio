@@ -161,7 +161,7 @@ grid.arrange(p1, p2, p3, p4, nrow = 2)
 3. Can you think in any other intesresting plots or analysis? 
 
 ```{r}
-#insert here a new plot or anaylysis you think is instering
+#insert here a new plot or analysis you think is instering
 
 ```
 
@@ -174,10 +174,6 @@ Answer (delete):
 ##2. Features Extraction 
 
 The original dataset has 32830 genes expressions. However, from the plot of the correlation we already know that some of these genes aren't associate with GA. Besides, genes with a very low variance might don't contribute for the prediction of gestacional age. Also, large datasets might add noise to machine leanring models. 
-
-
-ADD MORE INFO HERE ABOUT IMPORTANCE OF FEATURE EXTTRACTION
-
 
 We will use 5 methods do extract features. 
 1. Elimination of 30% of genes with lowest variance; 
