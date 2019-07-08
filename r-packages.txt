@@ -1,3 +1,4 @@
 conda install -c r r-ggplot2 
 conda install -c r r-essentials
 conda install -c r r-gridextra
+conda install -c conda-forge r-metrics 

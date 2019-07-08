@@ -24,7 +24,8 @@ set.seed(10)
 
 ## Defining the work directory of the project  
 #root = "/mnt/f/Brinkman group/current/Alice/ai4all2019_bio"
-root = "C:\\Users\\raoki\\Documents\\GitHub\\ai4all2019_bio"
+#root = "C:\\Users\\raoki\\Documents\\GitHub\\ai4all2019_bio"
+root =
 setwd(root)
 
 
@@ -38,13 +39,16 @@ sapply(c(input_dir,feat_dir, model_dir, result_dir),
 
 ## load packages; need to fix according to what model we'll be using
 pkgs = c("Rfast", "stringr", "plyr", "dplyr", "Matrix", # var, str_, llply, etc
-         "lattice", "ggplot2",'gridExtra', # barplot, plots
+         "lattice",  # barplot, plots
          "foreach", "doMC", # parallel back-end
          "caret", "e1071", "ranger", "ANN2", "randomForest",
          "elasticnet", "fastICA", "foba", "glmnet","kernlab", 
          "KRLS", "lars", "leaps", "nnls", "nodeHarvest", 
          "partDSA", "pls", "plsRglm", "rpart", "rqPen",
-         "RSNNS", "spikeslab", "xgboost",'Metrics') # ml
+         "RSNNS", "spikeslab", "xgboost") # ml
+
+require(c(ggplot2,gridExtra,Metrics))
+
 pkgs_ui = setdiff(pkgs, rownames(installed.packages()))
 if (length(pkgs_ui) > 0) install.packages(pkgs_ui, verbose=F)
 sapply(pkgs, require, character.only=T)
