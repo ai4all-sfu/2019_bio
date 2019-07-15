@@ -23,8 +23,6 @@ set.seed(10)
 
 
 ## Defining the work directory of the project  
-#root = "/mnt/f/Brinkman group/current/Alice/ai4all2019_bio"
-#root = "C:\\Users\\raoki\\Documents\\GitHub\\ai4all2019_bio"
 root = '~/Documents/GitHub/2019_bio'
 setwd(root)
 
@@ -183,7 +181,7 @@ Therefore, we will use 5 methods to extract features.
 
 ## 1 and 2) Removing genes with low variance and low absolute correlation
 data_cor$corr_p = abs(data_cor$corr_p)
-keep = subset(data_cor, variance>quantile(data_cor$variance, 0.8) & corr_p>quantile(data_cor$corr_p,0.8))
+keep = subset(data_cor, variance>quantile(data_cor$variance, 0.5) & corr_p>quantile(data_cor$corr_p,0.5))
 
 data2 = subset(data0, select = keep$col)
 data2 = scale(data2)
@@ -205,16 +203,19 @@ write.csv(feat.pca, paste0(feat_dir,'/features_pca.csv'), row.names=T)
 ## 4) Random Forest 
 metric = "Accuracy"
 GA = data1$GA
-data1 = subset(data1, select =keep$col)
+data1a = subset(data1, select =keep$col)
 data1 = data.frame(GA, data1)
 if(!exists('PreRF')){
   PreRF = caret::train(y=data1$GA, x=data1[,-1],  method='ranger',importance='impurity')
   PreRF.i = varImp(PreRF)$importance
 }else{
-  PreRF.i = PreRF
+  PreRF.i = varImp(PreRF)$importance
 }
 
-feat.ra = data2[,order(PreRF.i, decreasing=T)[1:500]]
+#save(PreRF,file=paste0(input_dir,"/script.Rdata"))
+
+
+feat.ra = data0[,order(varImp(PreRF.i)$importance$Overall, decreasing=T)[1:500]]
 write.csv(feat.ra, paste0(feat_dir,'/features_ra.csv'), row.names = T)
 
 ```
