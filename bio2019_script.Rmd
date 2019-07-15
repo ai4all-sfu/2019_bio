@@ -189,9 +189,10 @@ We will use 5 methods do extract features.
 
 ## 1 and 2) Removing genes with low variance and low absolute correlation
 data_cor$corr_p = abs(data_cor$corr_p)
-keep = subset(data_cor, variance>quantile(data_cor$variance, 0.3) & corr_p>quantile(data_cor$corr_p,0.3))
+keep = subset(data_cor, variance>quantile(data_cor$variance, 0.8) & corr_p>quantile(data_cor$corr_p,0.8))
 
 data2 = subset(data0, select = keep$col)
+data2 = scale(data2)
 
 ## Saving for future use
 write.csv(data2, paste0(feat_dir,'/features_raw.csv'), row.names=T)
@@ -308,6 +309,8 @@ train_ = data.frame(ga_,features_)
 model1 = lm(ga_ ~ .,data = train_)
 #Predictions
 predictions_m1 = predict(model1, newdata = train_[,-1])
+predictions_m1[predictions_m1<8] = 8
+predictions_m1[predictions_m1>42] = 42
 #Error from the observed values and fitted values
 rmse(ga_, predictions_m1)
 
@@ -430,6 +433,9 @@ train_ = data.frame(ga_,features_)
 #----------------------   Linear Regression
 model1 = lm(ga_ ~ .,data = train_)
 predictions_m1 = predict(model1, newdata = train_[,-1])
+predictions_m1[predictions_m1<8] = 8
+predictions_m1[predictions_m1>42] = 42
+
 rmse(ga_, predictions_m1)
 
 #PLOT 
@@ -469,6 +475,8 @@ train_ = data.frame(ga_,features_)
 #----------------------   Linear Regression
 model1 = lm(ga_ ~ .,data = train_)
 predictions_m1 = predict(model1, newdata = train_[,-1])
+predictions_m1[predictions_m1<8] = 8
+predictions_m1[predictions_m1>42] = 42
 rmse(ga_, predictions_m1)
 
 #PLOT 
@@ -698,7 +706,9 @@ features_pred = features[test_index,]
 # submission template
 class_final = read.csv(paste0(input_dir,"/TeamX_SC1_prediction.csv")) 
 class_final$GA = round(predictions,1)
-write.csv(class_final, file=paste0(result_dir,"/submission_file.csv"))
+class_final$GA[class_final$GA<8] = 8 
+class_final$GA[class_final$GA>42] = 42 
+write.csv(class_final, file=paste0(result_dir,"/submission_file.csv"),row.names=F)
 ```
 
 
