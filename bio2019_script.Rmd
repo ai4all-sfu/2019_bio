@@ -31,7 +31,6 @@ set.seed(10)
 
 
 ## Defining the work directory of the project
-#root = 'C:\\Users\\raoki\\Documents\\GitHub\\2019_bio'
 root = '~/Documents/GitHub/2019_bio'
 setwd(root)
 
