@@ -3,7 +3,7 @@
 invent the future ai4all is a 2 week summer enrichment program for grad 10 & 11 girls
 
 to-do:
-- download [data](https://drive.google.com/drive/folders/13xbyKcOuErvIgquKxvfz_MrHadLAztJZ?usp=sharing) to your "project directory"
+- download [data](https://drive.google.com/file/d/1Wqzze4Si2ieT_qyK4MyirG4K7y9jkztN/view?usp=sharing) [data](https://drive.google.com/file/d/1ZRZ8L0YWF_sKEUGMCAOCJzQ_COsrimnF/view?usp=sharing) to your "project directory"
   - `00_input`/: input data (see [below](#00_input))
   - `01_features`/: contains features transformed from `00_input`/`HTA20_RMA.RData`
   - `02_models`/: all models tested are saved here organized by feature used; these are loaded back into scripts to generate visualizations and tables
@@ -52,25 +52,3 @@ Deliverables
 - Domain knowledge: demonstrate the ability to understand and communicate purpose, methods, results, implications, and possible extensions of the project
 - Computational knowledge: recognize generalizability of each method used in pipeline and how they can be engineered and customized for specific data sets
 - Project results: good feels
-
-### data
-Link for download: https://drive.google.com/file/d/1Wqzze4Si2ieT_qyK4MyirG4K7y9jkztN/view?usp=sharing
-https://drive.google.com/file/d/1ZRZ8L0YWF_sKEUGMCAOCJzQ_COsrimnF/view?usp=sharing
-### drive/data/01_features
-
-this folder contains features transformed from ```HTA20_RMA.RData```
-
-### drive/data/02_models
-
-all models tested are saved here organized by feature used; these are loaded back into scripts to generate visualizations and tables
-
-### drive/data/03_results
-
-resulting visualizations and tables are saved here
-
-### drive/data/cvinds.Rdata
-
-indices used for cross validation in training, and testing
-
-
-
