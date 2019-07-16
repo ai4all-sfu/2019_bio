@@ -3,7 +3,7 @@
 invent the future ai4all is a 2 week summer enrichment program for grad 10 & 11 girls
 
 to-do:
-- download [data](https://drive.google.com/file/d/1hZZ8zRbnqXG2uOmq6Pwzx8eTw_EKQrSp/view?usp=sharing) [data](https://drive.google.com/file/d/1ZRZ8L0YWF_sKEUGMCAOCJzQ_COsrimnF/view?usp=sharing) to your "project directory"
+- download [data](https://drive.google.com/file/d/1hZZ8zRbnqXG2uOmq6Pwzx8eTw_EKQrSp/view?usp=sharing) to your "project directory"
   - `00_input`/: input data (see [below](#00_input))
   - `01_features`/: contains features transformed from `00_input`/`HTA20_RMA.RData`
   - `02_models`/: all models tested are saved here organized by feature used; these are loaded back into scripts to generate visualizations and tables
