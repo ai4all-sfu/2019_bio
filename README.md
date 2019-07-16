@@ -1,6 +1,6 @@
 # ai4all2019_bio
 
-invent the future ai4all is a 2 week summer enrichment program for grad 10 & 11 girls
+invent the future ai4all is a 2 week summer enrichment program for grade 10 & 11 girls
 
 to-do:
 - download [data](https://drive.google.com/file/d/1hZZ8zRbnqXG2uOmq6Pwzx8eTw_EKQrSp/view?usp=sharing) to your "project directory"
