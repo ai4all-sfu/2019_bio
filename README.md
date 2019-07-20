@@ -15,7 +15,7 @@ to-do:
   - output: `TeamX_SC1_prediction.csv` (368 predicted GA result for test samples; GAs are continuous values 8-42 weeks rounded to 1 decimal); can submit max 5 results to leaderboard, and 1 final result as submission + code + write-up
 
 links:
-- challenge site ([how to participate](https://www.synapse.org/#!Synapse:syn18380862/wiki/590487), [leaderboard](https://www.synapse.org/#!Synapse:syn18380862/wiki/590488)): https://www.synapse.org/#!Synapse:syn18380862
+- challenge site: https://www.synapse.org/#!Synapse:syn18380862
 - ai4all sfu site: https://www.sfu.ca/computing/inventthefuture.html
 
 ## schedule
