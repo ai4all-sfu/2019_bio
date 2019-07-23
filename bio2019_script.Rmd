@@ -31,7 +31,8 @@ set.seed(10)
 
 
 ## Defining the work directory of the project
-root = '~/Documents/GitHub/2019_bio'
+root = '~/GitHub/2019_bio'
+#root = '~/Documents/GitHub/2019_bio'
 setwd(root)
 
 
@@ -126,7 +127,8 @@ data1 = subset(data1, Train == 1)
 data1 = subset(data1, select = -c(Train,SampleID))
 
 #train set 
-data_cor = data.frame(col = names(data1),corr_p = apply(data1, 2, cor, x = data1$GA, method = 'pearson'))
+data_cor = data.frame(col = names(data1),
+                      corr_p = apply(data1, 2, cor, x = data1$GA, method = 'pearson'))
 data_cor = data.frame(data_cor, corr_s = apply(data1, 2, cor, x = data1$GA, method = 'spearman'))
 rownames(data_cor) = NULL 
 
@@ -240,7 +242,9 @@ if(!exists('preA')){
   feat.A = encode(preA, data2) 
 }
 rownames(feat.A) = rownames(feat.ra)
-write.csv(feat.A, paste0(feat_dir,'/features_a.csv'), row.names = T)
+
+feat.A = read.csv(paste0(feat_dir,'/features_a.csv'), header=T, sep = ',')
+#write.csv(feat.A, paste0(feat_dir,'/features_a.csv'), row.names = T)
 ```
 
 ### Exercise 2: 
@@ -248,9 +252,16 @@ write.csv(feat.A, paste0(feat_dir,'/features_a.csv'), row.names = T)
 2. Choose between PCA and Random Forest. Try to save a new features set with a different number of features. 
 
 ```{r}
-#feat.unique = predict(PrePCA,data2) #for pca OR
-#feat.unique = data2[] #for random forest
-#write.csv(feat.unique, )
+
+a = read.csv(paste0(feat_dir,'/features_pca.csv'), header=T, sep = ',')
+b = read.csv(paste0(feat_dir,'/features_ra.csv'), header=T, sep = ',')
+d = read.csv(paste0(feat_dir,'/features_a.csv'), header=T, sep = ',')
+
+#CHANGE THESE NUMBERS BELLOW, OPTIONS ---> a:0-556,b:0-501, d:0-501 
+feat.unique = data.frame(a[,c(0:100)],b[,c(1:10)], d[,c(100:200)] )
+
+#COPY HOW TO DO IT FROM CODE ABOVE AND BE CAREFUL TO NOT REPLACE OTHER FEATURES
+write.csv(feat.unique, paste0(feat_dir,'/features_unique.csv'), row.names = T)
 
 ```
 
@@ -333,12 +344,12 @@ ggplot(plotdata, aes(x = ga_,y = predictions_m1))+
 ### Exercise 4: 
 Calculate the predictions for ```features_val``` and ```ga_val``` using linear regression. With the predicted values, make a plot ```predictions_m1_val``` and ```ga_val```
 ```{r, warning=FALSE}
-#predictions_m1_val = predict()
-#rmse()
+predictions_m1_val = predict(model1, data.frame(features_val))
+rmse(ga_val,predictions_m1_val)
 ```
 ```{r}
-#plotdata = data.frame()
-#ggplot(plotdata, aes(x = ,y = ))+geom_point(color = '')+xlab('')+ylab('')
+plotdata = data.frame(ga_val,predictions_m1_val)
+ggplot(plotdata, aes(x = ga_val,y = predictions_m1_val))+geom_point(color = 'blue')+xlab('')+ylab('')
 
 ```
 
@@ -371,16 +382,16 @@ ggplot(plotdata, aes(x = ga_,y = predictions_m2))+
 
 ```
 ### Exercise 5: 
-Calculate the predictions for ```features_val``` and ```ga_val``` using rvm. With the predicted values, make a plot ```predictions_m1_val``` and ```ga_val```
+Calculate the predictions for ```features_val``` and ```ga_val``` using rvm. With the predicted values, make a plot ```predictions_m2_val``` and ```ga_val```
 ```{r, warning=FALSE}
-#predictions_m2_val = predict()
-#rmse()
+predictions_m2_val = predict(model2,features_val)
+rmse(ga_val,predictions_m2_val)
 ```
 
 
 ```{r}
-#plotdata = data.frame()
-#ggplot(plotdata, aes(x = ,y = ))+geom_point(color = '')+xlab('')+ylab('')
+plotdata = data.frame(ga_val,predictions_m2_val)
+ggplot(plotdata, aes(x = ga_val,y = predictions_m2_val))+geom_point(color = 'red')+xlab('')+ylab('')
 
 ```
 
@@ -406,14 +417,14 @@ ggplot(plotdata, aes(x = ga_,y = predictions_m3.predictions))+
 ### Exercise 6: 
 Calculate the predictions for ```features_val``` and ```ga_val``` using Random Forest. With the predicted values, make a plot ```predictions_m1_val``` and ```ga_val```
 ```{r, warning=FALSE}
-#predictions_m3_val = predict()
-#rmse()
+predictions_m3_val = predict(model3, features_val)
+rmse(ga_val,predictions_m3_val$predictions)
 ```
 
 
 ```{r}
-#plotdata = 
-#ggplot(plotdata, aes(x = ,y = ))+geom_point(color = '')+xlab('')+ylab('')
+plotdata = data.frame(ga_val,predictions_m3_val$predictions)
+ggplot(plotdata, aes(x = ga_val,y = predictions_m3_val.predictions))+geom_point(color = 'blue')+xlab('')+ylab('')
 
 ```
 
@@ -424,7 +435,7 @@ Repeat Linear Regression, RVM, and Random Forest with 2 other sets of features: 
 SET OF FEATURES 1
 ```{r, warning=FALSE}
 #----------------------   CHANGE HERE
-#feature_type =  #options are 'pca', 'raw', 'ra' for random forest and 'a' for autoencoder
+feature_type = 'ra' #options are 'pca', 'raw', 'ra' for random forest and 'a' for autoencoder
 
 ## 0) load feature 
 features = read.csv(paste(feat_dir,"/features_",feature_type,'.csv', sep = ''))
@@ -450,15 +461,41 @@ ggplot(plotdata, aes(x = ga_,y = predictions_m1))+
   ylab('Predicted Values')
 
 #----------------------   CHANGE HERE: ADD LINEAR REGRESSION FOR THE VALIDATION SET 
+predictions_m1_val = predict(model1, newdata = data.frame(features_val))
+predictions_m1_val[predictions_m1_val<8] = 8
+predictions_m1_val[predictions_m1_val>42] = 42
+
+rmse(ga_val,predictions_m1_val)
 
 #----------------------   ADD SVM FOR TRAINING AND VALIDATION SET 
+
+
+model2 = rvm(x = features_, ga_, type="regression")
+predictions_m2 = predict(model2,data = as.data.frame(features_))
+predictions_m2[predictions_m2<8] = 8
+predictions_m2[predictions_m2>42] = 42
+
+rmse(ga_,predictions_m2)
+
+predictions_m2_val = predict(model2, data.frame(features_val))
+predictions_m2_val[predictions_m2_val<8] = 8
+predictions_m2_val[predictions_m2_val>42] = 42
+rmse(ga_val,predictions_m2_val)
 
 #----------------------   ADD RAM FOR TRAINING AND VALIDATION SET 
 
 
+model3 = ranger(ga_~.,data = train_)
+predictions_m3 = predict(model3, data = as.data.frame(features_)) 
+predictions_m3$predictions[predictions_m3$predictions<8] =8
+predictions_m3$predictions[predictions_m3$predictions>42] =42
 
+rmse(ga_,predictions_m3$predictions)
 
-
+predictions_m3_val = predict(model3, features_val)
+predictions_m3_val$predictions[predictions_m3_val$predictions<8] =8
+predictions_m3_val$predictions[predictions_m3_val$predictions>42] =42
+rmse(ga_val,predictions_m3_val$predictions)
 
 ```
 
@@ -508,21 +545,24 @@ Create a plot to identify which model or set of features is the best so far.
 
 ```{r, warning=FALSE}
 #Saving the results of the predictions when the .unique features were used 
-output_unique = data.frame(
+output = data.frame(
   model = c('LR','RVM','RF'),
-  feature = c(rep('unique',3) ),
+  feature = c(rep('ra',3) ),
   rmse_t = c(rmse(ga_, predictions_m1),rmse(ga_,predictions_m2),rmse(ga_,predictions_m3$predictions) ),
-  rmse_val = c(rmse(ga_val, predictions_m1v),rmse(ga_val,predictions_m2v),rmse(ga_val,predictions_m3v$predictions) )
+  rmse_val = c(rmse(ga_val, predictions_m1_val),rmse(ga_val,predictions_m2_val),rmse(ga_val,predictions_m3_val$predictions) )
 )
-
-output = read.table(paste0(input_dir,'//output_basic_models.csv'),sep=',', header=T)
-output = rbind(output,output_unique)
+output
+#output = read.table(paste0(input_dir,'/output_basic_models.csv'),sep=',', header=T)
+#output = rbind(output,output_unique)
 ```
 
 
 ```{r}
-#p7<- ggplot(data = output, aes(x = , y = )) +
-#p8<- ggplot(data = output, aes(x = , y = )) + 
+p7<- ggplot(data = output, aes(x = model, y = rmse_t)) +geom_bar(stat='identity')
+p8<- ggplot(data = output, aes(x = model, y = rmse_val)) +geom_bar(stat='identity')
+p7 
+p8
+
 ```
 
 
