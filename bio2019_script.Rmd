@@ -558,8 +558,8 @@ output
 
 
 ```{r}
-p7<- ggplot(data = output, aes(x = model, y = rmse_t)) +geom_bar(stat='identity')
-p8<- ggplot(data = output, aes(x = model, y = rmse_val)) +geom_bar(stat='identity')
+p7<- ggplot(data = output, aes(x = , y = )) +geom_bar(stat='identity')+xlab('Training set')
+p8<- ggplot(data = output, aes(x = , y = )) +geom_bar(stat='identity')+xlab('Validation set')
 p7 
 p8
 
