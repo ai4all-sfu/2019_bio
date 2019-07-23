@@ -1,5 +1,7 @@
 # Predicting Gestational Age Using Maternal Whole-blood Transcriptomics
 
+aya43@sfu.ca; raquel_aoki@sfu.ca
+
 invent the future ai4all @ simon fraser university is a 2 week summer enrichment program for grade 10 & 11 girls
 
 to-do:
@@ -14,6 +16,12 @@ to-do:
 - open and work on [bio2019_script.Rmd](bio2019_script.Rmd): R notebook with data processing, feature extraction, model selection and prediction of final results.  
   - input: `HTA20_RMA.RData` (32830 genes x 367+368 train+test samples) matrix
   - output: `TeamX_SC1_prediction.csv` (368 predicted GA result for test samples; GAs are continuous values 8-42 weeks rounded to 1 decimal); can submit max 5 results to leaderboard, and 1 final result as submission + code + write-up
+
+friday:
+- 10:30-11am pitch practice in the stadium
+- 2-3pm pitch
+- 3-4pm demo time
+- 4-5pm closing ceremonies
 
 links:
 - challenge site: https://www.synapse.org/#!Synapse:syn18380862
