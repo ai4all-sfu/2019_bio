@@ -1,9 +1,10 @@
-# ai4all2019_bio
+# Predicting Gestational Age Using Maternal Whole-blood Transcriptomics
 
-invent the future ai4all is a 2 week summer enrichment program for grad 10 & 11 girls
+invent the future ai4all @ simon fraser university is a 2 week summer enrichment program for grade 10 & 11 girls
 
 to-do:
 - download [data](https://drive.google.com/file/d/1hZZ8zRbnqXG2uOmq6Pwzx8eTw_EKQrSp/view?usp=sharing) to your "project directory"
+- download only inputs (leave cvinds.Rdata in root directory, put the rest of the files into a folder called 00_inpu): https://drive.google.com/file/d/1-cnU4SbXujICW4OYbLlFrpupJd-cr8dj/view?usp=sharing
   - `00_input`/: input data (see [below](#00_input))
   - `01_features`/: contains features transformed from `00_input`/`HTA20_RMA.RData`
   - `02_models`/: all models tested are saved here organized by feature used; these are loaded back into scripts to generate visualizations and tables
@@ -15,7 +16,7 @@ to-do:
   - output: `TeamX_SC1_prediction.csv` (368 predicted GA result for test samples; GAs are continuous values 8-42 weeks rounded to 1 decimal); can submit max 5 results to leaderboard, and 1 final result as submission + code + write-up
 
 links:
-- challenge site ([how to participate](https://www.synapse.org/#!Synapse:syn18380862/wiki/590487), [leaderboard](https://www.synapse.org/#!Synapse:syn18380862/wiki/590488)): https://www.synapse.org/#!Synapse:syn18380862
+- challenge site: https://www.synapse.org/#!Synapse:syn18380862
 - ai4all sfu site: https://www.sfu.ca/computing/inventthefuture.html
 
 ## schedule
