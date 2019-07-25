@@ -16,17 +16,13 @@ to-do:
   - input: `HTA20_RMA.RData` (32830 genes x 367+368 train+test samples) matrix
   - output: `TeamX_SC1_prediction.csv` (368 predicted GA result for test samples; GAs are continuous values 8-42 weeks rounded to 1 decimal); can submit max 5 results to leaderboard, and 1 final result as submission + code + write-up
 
-friday:
-- 10:30-11am pitch practice in the stadium
-- 2-3pm pitch
-- 3-4pm demo time
-- 4-5pm closing ceremonies
-
 links:
 - challenge site: https://www.synapse.org/#!Synapse:syn18380862
 - ai4all sfu site: https://www.sfu.ca/computing/inventthefuture.html
 
 ## schedule
+
+see [program schedule](2019_ITF_Booklet_Digital-8_6421.pdf)
 
 see [lecture slides](https://docs.google.com/presentation/d/1sWky9xHY-KBqZ-GmGf7OIDZPgAjZlGrMq-ixtWTpkT4/edit?usp=sharing)
 
@@ -35,6 +31,12 @@ Day 1: Explore the challenge, work on the data and learn about feature extractio
 Day 2: Work on Machine Learning Models and Prediction 
 
 Day 3: Work on the presentation of the final results 
+
+Day 4: Presentation Friday
+- 10:30-11am pitch practice in the stadium
+- 2-3pm pitch
+- 3-4pm demo time
+- 4-5pm closing ceremonies
 
 ## project: sub-challenge 1 - gestational age prediction
 
