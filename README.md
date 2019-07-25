@@ -1,6 +1,6 @@
 # Predicting Gestational Age Using Maternal Whole-blood Transcriptomics
 
-aya43@sfu.ca; raquel_aoki@sfu.ca
+aya43@sfu.ca; raoki@sfu.ca
 
 invent the future ai4all @ simon fraser university is a 2 week summer enrichment program for grade 10 & 11 girls
 
