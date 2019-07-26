@@ -4,6 +4,10 @@ aya43@sfu.ca; raoki@sfu.ca
 
 invent the future ai4all @ simon fraser university is a 2 week summer enrichment program for grade 10 & 11 girls
 
+presentation: https://docs.google.com/presentation/d/1AYxSCHaQXXQxSZWGXAcj0TgDn0HZGFLHXGVC1Avlrf0/edit?usp=sharing
+
+website: https://sites.google.com/view/ai4allbio/
+
 to-do:
 - download [data](https://drive.google.com/file/d/1hZZ8zRbnqXG2uOmq6Pwzx8eTw_EKQrSp/view?usp=sharing) to your "project directory"
   - `00_input`/: input data (see [below](#00_input))
