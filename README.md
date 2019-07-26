@@ -34,6 +34,7 @@ Day 3: Work on the presentation of the final results
 
 Day 4: Presentation Friday
 - 10:30-11am pitch practice in the stadium
+- 1pm re-rehersal
 - 2-3pm pitch
 - 3-4pm demo time
 - 4-5pm closing ceremonies
